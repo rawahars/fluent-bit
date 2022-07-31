@@ -198,7 +198,7 @@ static int cb_cloudwatch_init(struct flb_output_instance *ins,
 
     /* one tls instance for provider, one for cw client */
     ctx->cred_tls = flb_tls_create(FLB_TRUE,
-                                   ins->tls_debug,
+                                   FLB_TRUE,
                                    ins->tls_vhost,
                                    ins->tls_ca_path,
                                    ins->tls_ca_file,
@@ -212,7 +212,7 @@ static int cb_cloudwatch_init(struct flb_output_instance *ins,
     }
 
     ctx->client_tls = flb_tls_create(FLB_TRUE,
-                                     ins->tls_debug,
+                                     FLB_TRUE,
                                      ins->tls_vhost,
                                      ins->tls_ca_path,
                                      ins->tls_ca_file,
@@ -246,7 +246,7 @@ static int cb_cloudwatch_init(struct flb_output_instance *ins,
 
         /* STS provider needs yet another separate TLS instance */
         ctx->sts_tls = flb_tls_create(FLB_TRUE,
-                                      ins->tls_debug,
+                                      FLB_TRUE,
                                       ins->tls_vhost,
                                       ins->tls_ca_path,
                                       ins->tls_ca_file,
