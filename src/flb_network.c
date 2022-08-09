@@ -1211,19 +1211,21 @@ flb_sockfd_t flb_net_tcp_connect(const char *host, unsigned long port,
 
     /* retrieve DNS info */
     if (use_async_dns) {
+        flb_warn("[net] [dns-debug] if executed");
         ret = flb_net_getaddrinfo(host, _port, &hints, &res,
                                   u_conn->u->net.dns_mode, connect_timeout);
     }
     else {
+        flb_warn("[net] [dns-debug] else executed");
         ret = getaddrinfo(host, _port, &hints, &res);
     }
 
     if (ret) {
         if (use_async_dns) {
-            flb_warn("[net] getaddrinfo(host='%s', err=%d): %s", host, ret, ares_strerror(ret));
+            flb_warn("[net] [if] getaddrinfo(host='%s', err=%d): %s", host, ret, ares_strerror(ret));
         }
         else {
-            flb_warn("[net] getaddrinfo(host='%s', err=%d): %s", host, ret, gai_strerror(ret));
+            flb_warn("[net] [else] getaddrinfo(host='%s', err=%d): %s", host, ret, gai_strerror(ret));
         }
 
         return -1;

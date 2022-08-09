@@ -269,6 +269,8 @@ static int cb_firehose_init(struct flb_output_instance *ins,
         goto error;
     }
 
+    upstream->flags &= ~(FLB_IO_ASYNC);
+
     ctx->firehose_client->upstream = upstream;
     flb_output_upstream_set(upstream, ctx->ins);
 
