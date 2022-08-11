@@ -108,6 +108,7 @@ option(FLB_AVRO_ENCODER        "Build with Avro encoding support" No)
 option(FLB_AWS_ERROR_REPORTER  "Build with aws error reporting support" No)
 option(FLB_ARROW               "Build with Apache Arrow support"  No)
 option(FLB_WINDOWS_DEFAULTS    "Build with predefined Windows settings"  Yes)
+option(FLB_ASYNC_DISABLED      "Build with async mode disabled for all plugins"  No)
 
 # Native Metrics Support (cmetrics)
 option(FLB_METRICS            "Enable metrics support"       Yes)
@@ -529,6 +530,11 @@ endif()
 
 if (FLB_AWS_ERROR_REPORTER)
   FLB_DEFINITION(FLB_HAVE_AWS_ERROR_REPORTER)
+endif()
+
+# Disable async mode for all the plugins
+if (FLB_ASYNC_DISABLED)
+  FLB_DEFINITION(FLB_HAVE_ASYNC_DISABLED)
 endif()
 
 # Signv4

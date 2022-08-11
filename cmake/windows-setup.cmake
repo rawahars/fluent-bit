@@ -14,6 +14,8 @@ if(FLB_WINDOWS_DEFAULTS)
   set(FLB_AWS                   Yes)
   set(FLB_HTTP_SERVER           Yes)
   set(FLB_METRICS               Yes)
+  set(FLB_METRICS               Yes)
+  set(FLB_ASYNC_DISABLED         No)
 
   # INPUT plugins
   # =============

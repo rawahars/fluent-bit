@@ -350,6 +350,8 @@ Filter plugins do not support coroutines, consequently you must disable async mo
 upstream->flags &= ~(FLB_IO_ASYNC);
 ```
 
+In order to disable asynchronous mode across all the plugins and filters, use `FLB_DISABLE_SYNC` flag during compilation.
+
 ##### Output plugins
 
 Output plugins use coroutines. Plugins have a context structure which is available in all calls and can be used to store state. In general, you can write code without ever considering concurrency. This is because only one coroutine is active at a time. Thus, synchronization primitives like mutex locks or semaphores are not needed.
@@ -393,6 +395,7 @@ This can be re-enabled at any time:
 upstream->flags |= FLB_IO_ASYNC;
 ```
 
+In order to disable asynchronous mode across all the plugins and filters, use `FLB_DISABLE_SYNC` flag during compilation.
 
 ### Plugin API
 

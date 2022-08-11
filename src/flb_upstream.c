@@ -279,8 +279,11 @@ struct flb_upstream *flb_upstream_create(struct flb_config *config,
     }
 
     u->flags          = flags;
-    u->flags         |= FLB_IO_ASYNC;
     u->thread_safe    = FLB_FALSE;
+    
+#ifndef FLB_HAVE_ASYNC_DISABLED
+    u->flags         |= FLB_IO_ASYNC;
+#endif
 
     /* Initialize queues */
     flb_upstream_queue_init(&u->queue);
